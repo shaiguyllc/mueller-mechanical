@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mueller Mechanical — Philadelphia HVAC Craftsmen</title>
+  <meta name="description" content="Mueller Mechanical — Philadelphia's trusted HVAC company. A2L certified, 4-brand dealer (Amana, Daikin, Goodman, Fujitsu). Emergency service available. Call 215-896-3665." />
+  <meta name="keywords" content="HVAC Philadelphia, AC repair Philadelphia, furnace repair Philadelphia, heat pump installation, ductless mini split Philadelphia, Mueller Mechanical, A2L certified HVAC" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== CSS RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ===== CUSTOM PROPERTIES ===== */
+    :root {
+      --navy: #1B3A6B;
+      --navy-dark: #0F2347;
+      --navy-mid: #2A4E8A;
+      --orange: #E85D00;
+      --orange-light: #FF7A2F;
+      --orange-dim: rgba(232, 93, 0, 0.08);
+      --white: #FFFFFF;
+      --off-white: #F8F7F5;
+      --light-gray: #F0EEE9;
+      --mid-gray: #E5E2DC;
+      --text-dark: #1A1A1A;
+      --text-body: #444444;
+      --text-muted: #777777;
+      --border: #E0DDD7;
+      --radius: 8px;
+      --shadow: 0 2px 16px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 24px rgba(0,0,0,0.12);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.16);
+      --transition: 0.2s ease;
+    }
+
+    /* ===== BASE ===== */
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--text-body);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body.modal-open { overflow: hidden; }
+
+    h1, h2, h3, h4 { line-height: 1.2; color: var(--text-dark); }
+
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 540px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-header .section-subtitle { margin: 0 auto; }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ===== BUTTONS ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      padding: 18px 48px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: 0 4px 20px rgba(232,93,0,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--orange-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(232,93,0,0.45);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+      padding: 16px 36px;
+      font-size: 1rem;
+    }
+    .btn-secondary:hover {
+      background: var(--white);
+      color: var(--navy);
+    }
+    .btn-orange-sm {
+      background: var(--orange);
+      color: var(--white);
+      padding: 12px 28px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .btn-orange-sm:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+    /* ===== FADE IN ANIMATION ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       STICKY HEADER
+    ============================================================ */
+    #site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      background: var(--white);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    #site-header.scrolled {
+      border-bottom-color: var(--border);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 48px;
+      gap: 24px;
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .logo-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+    }
+    .logo-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .main-nav a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--navy);
+      position: relative;
+      padding-bottom: 3px;
+    }
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--orange);
+      transition: width var(--transition);
+    }
+    .main-nav a:hover::after { width: 100%; }
+    .header-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .header-phone {
+      background: var(--orange);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background var(--transition);
+    }
+    .header-phone:hover { background: var(--orange-light); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile nav drawer */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; right: -100%;
+      width: min(320px, 85vw);
+      height: 100vh;
+      background: var(--white);
+      z-index: 950;
+      padding: 80px 32px 40px;
+      box-shadow: -4px 0 30px rgba(0,0,0,0.15);
+      transition: right 0.3s ease;
+      flex-direction: column;
+      gap: 0;
+    }
+    .mobile-nav.open { right: 0; }
+    .mobile-nav a {
+      display: block;
+      padding: 16px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy);
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav .mobile-phone {
+      margin-top: 32px;
+      display: block;
+      text-align: center;
+      background: var(--orange);
+      color: var(--white);
+      padding: 16px 24px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-bottom: none;
+    }
+    .nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 940;
+    }
+    .nav-overlay.open { display: block; }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      background-color: var(--navy);
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,0.018) 40px,
+        rgba(255,255,255,0.018) 80px
+      );
+      padding: 140px 48px 80px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 60% 40%;
+      gap: 48px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .hero-headline {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      color: var(--white);
+      line-height: 1.0;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 20px;
+    }
+    .hero-hours {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+      border-left: 3px solid var(--orange);
+      padding-left: 14px;
+      line-height: 1.6;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .hero-trust-item {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-trust-item::before {
+      content: '✔';
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    /* Hero stats card */
+    .hero-stats {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      backdrop-filter: blur(4px);
+    }
+    .stat-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--orange);
+      min-width: 80px;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.3;
+    }
+
+    /* ============================================================
+       TRUST BAR
+    ============================================================ */
+    #trust-bar {
+      background: var(--white);
+      border-top: 2px solid var(--navy);
+      border-bottom: 2px solid var(--navy);
+      padding: 18px 0;
+      overflow: hidden;
+    }
+    .trust-bar-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+    .trust-divider {
+      width: 1px;
+      height: 28px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    /* Mobile ticker */
+    .trust-ticker {
+      display: none;
+      overflow: hidden;
+    }
+    .trust-ticker-track {
+      display: flex;
+      gap: 48px;
+      animation: ticker 20s linear infinite;
+      width: max-content;
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ============================================================
+       MUELLER DIFFERENCE
+    ============================================================ */
+    #difference {
+      background: var(--light-gray);
+      padding: 80px 24px;
+    }
+    .difference-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .diff-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 32px 28px;
+      border-left: 4px solid var(--orange);
+      box-shadow: var(--shadow);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .diff-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+    .diff-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+    .diff-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .diff-card p {
+      font-size: 0.95rem;
+      color: var(--text-body);
+      line-height: 1.65;
+    }
+    #difference .section-header {
+      max-width: 1440px;
+      margin: 0 auto 3rem;
+      text-align: left;
+    }
+
+    /* ============================================================
+       SERVICES GRID
+    ============================================================ */
+    #services {
+      background: var(--white);
+      padding: 80px 24px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 20px;
+      transition: all var(--transition);
+      border-top: 3px solid transparent;
+    }
+    .service-card:hover {
+      border-top-color: var(--orange);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+    .service-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .service-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       TESTIMONIALS
+    ============================================================ */
+    #testimonials {
+      background: var(--light-gray);
+      padding: 80px 24px;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1440px;
+      margin: 0 auto 20px;
+    }
+    .testimonials-row2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .review-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      transition: box-shadow var(--transition);
+    }
+    .review-card:hover { box-shadow: var(--shadow-md); }
+    .review-stars {
+      color: #F5A623;
+      font-size: 1rem;
+      margin-bottom: 14px;
+      letter-spacing: 2px;
+    }
+    .review-quote {
+      font-size: 0.93rem;
+      color: var(--text-body);
+      line-height: 1.65;
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .review-name {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text-dark);
+    }
+    .review-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       ABOUT
+    ============================================================ */
+    #about {
+      background: var(--white);
+      padding: 80px 24px;
+    }
+    .about-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 40% 60%;
+      gap: 56px;
+      align-items: start;
+    }
+    .about-card {
+      background: var(--navy);
+      border-radius: 12px;
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .about-mantra {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.4rem;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 36px;
+      letter-spacing: 0.02em;
+    }
+    .about-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .about-stat {
+      background: rgba(255,255,255,0.07);
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .about-stat-val {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--orange);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .about-stat-lbl {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .about-content h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .about-content p {
+      margin-bottom: 18px;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-body);
+    }
+    .about-content p:last-of-type { margin-bottom: 28px; }
+
+    /* ============================================================
+       SERVICE AREAS
+    ============================================================ */
+    #areas {
+      background: var(--light-gray);
+      padding: 80px 24px;
+    }
+    .areas-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .areas-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .areas-group h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--orange);
+      display: inline-block;
+    }
+    .area-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .area-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 7px 16px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-body);
+      transition: all var(--transition);
+    }
+    .area-pill::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--navy);
+      flex-shrink: 0;
+    }
+    .area-pill:hover {
+      border-color: var(--navy);
+      background: var(--off-white);
+    }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    #faq {
+      background: var(--white);
+      padding: 80px 24px;
+    }
+    .faq-list {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .faq-list details {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: all var(--transition);
+    }
+    .faq-list details[open] {
+      border-left: 4px solid var(--orange);
+      box-shadow: var(--shadow);
+    }
+    .faq-list summary {
+      cursor: pointer;
+      padding: 20px 24px;
+      font-weight: 600;
+      font-size: 0.97rem;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+      user-select: none;
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after {
+      content: '+';
+      font-size: 1.3rem;
+      color: var(--orange);
+      font-weight: 400;
+      flex-shrink: 0;
+      margin-left: 16px;
+      transition: transform 0.2s;
+    }
+    .faq-list details[open] summary::after {
+      content: '−';
+    }
+    .faq-answer {
+      padding: 0 48px 20px;
+      font-size: 0.93rem;
+      color: var(--text-body);
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    /* ============================================================
+       CONTACT SECTION
+    ============================================================ */
+    #contact {
+      background: var(--navy);
+      padding: 80px 24px;
+    }
+    .contact-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .contact-info h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .contact-detail-icon {
+      font-size: 1.1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .contact-detail-text {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.97rem;
+      line-height: 1.5;
+    }
+    .contact-phone-link {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--orange);
+      display: block;
+      margin-bottom: 8px;
+      transition: color var(--transition);
+    }
+    .contact-phone-link:hover { color: var(--orange-light); }
+    .contact-note {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 4px;
+    }
+    .contact-form-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow-lg);
+    }
+    .contact-form-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.93rem;
+      color: var(--text-dark);
+      background: var(--white);
+      transition: border-color var(--transition);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--navy);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .form-submit {
+      width: 100%;
+      background: var(--orange);
+      color: var(--white);
+      padding: 15px 24px;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: background var(--transition), transform var(--transition);
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--navy-dark);
+      padding: 60px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-col h4 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+    .footer-col ul li a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      transition: color var(--transition);
+    }
+    .footer-col ul li a:hover { color: var(--orange); }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer-contact-item a { color: rgba(255,255,255,0.55); }
+    .footer-contact-item a:hover { color: var(--orange); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      font-style: italic;
+    }
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      transition: color var(--transition);
+    }
+    .footer-social a:hover { color: var(--orange); }
+
+    /* ============================================================
+       MODAL — MULTI-STEP QUOTE
+    ============================================================ */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 35, 71, 0.65);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(3px);
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal-box {
+      background: var(--white);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 540px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.95) translateY(12px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-header {
+      background: var(--navy);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 12px 12px 0 0;
+    }
+    .modal-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--white);
+    }
+    .modal-close {
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 400;
+      transition: background var(--transition);
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.22); }
+    .modal-progress {
+      padding: 16px 28px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .modal-progress-text {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--orange);
+      letter-spacing: 0.06em;
+    }
+    .modal-body {
+      padding: 28px 28px 32px;
+    }
+
+    /* Step indicators */
+    .step-icon {
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .step-heading {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .step-sub {
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    /* Step 1 — Zip */
+    .zip-input-wrap {
+      position: relative;
+      margin-bottom: 12px;
+    }
+    .zip-input-wrap input {
+      width: 100%;
+      padding: 16px 48px 16px 20px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      outline: none;
+      text-align: center;
+      font-family: 'Syne', sans-serif;
+      transition: border-color var(--transition);
+    }
+    .zip-input-wrap input:focus { border-color: var(--navy); }
+    .zip-input-wrap input.valid { border-color: #22C55E; }
+    .zip-input-wrap input.invalid { border-color: #EF4444; }
+    .zip-check {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.3rem;
+      display: none;
+    }
+    .zip-error {
+      display: none;
+      color: #EF4444;
+      font-size: 0.83rem;
+      text-align: center;
+      padding: 10px 16px;
+      background: rgba(239,68,68,0.07);
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+    .zip-error.show { display: block; }
+
+    /* Step 2 — Category */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .cat-card {
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .cat-card:hover {
+      border-color: var(--orange);
+      background: var(--orange-dim);
+    }
+    .cat-card.selected {
+      border-color: var(--orange);
+      background: var(--orange-dim);
+    }
+    .cat-emoji { font-size: 1.8rem; margin-bottom: 6px; }
+    .cat-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+
+    /* Step 3 — Contact */
+    .modal-form .form-group { margin-bottom: 14px; }
+    .modal-form .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 5px;
+    }
+    .modal-form .form-group input,
+    .modal-form .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .modal-form .form-group input:focus,
+    .modal-form .form-group textarea:focus { border-color: var(--navy); }
+    .modal-form textarea { min-height: 80px; resize: vertical; }
+
+    /* Step 4 — Confirm */
+    .confirm-check {
+      width: 72px;
+      height: 72px;
+      background: #22C55E;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      margin: 0 auto 20px;
+    }
+    .confirm-heading {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .confirm-sub {
+      text-align: center;
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .confirm-phone {
+      text-align: center;
+      font-weight: 600;
+      color: var(--orange);
+    }
+    .confirm-phone a { color: var(--orange); }
+
+    /* Modal buttons */
+    .modal-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--orange);
+      color: var(--white);
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: background var(--transition), transform var(--transition);
+      margin-top: 4px;
+    }
+    .modal-btn:hover { background: var(--orange-light); transform: translateY(-1px); }
+    .modal-btn-close {
+      width: 100%;
+      padding: 12px;
+      background: var(--light-gray);
+      color: var(--text-body);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-top: 10px;
+      transition: background var(--transition);
+    }
+    .modal-btn-close:hover { background: var(--mid-gray); }
+
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+
+    /* ============================================================
+       RESPONSIVE — 1024px
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .difference-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — 768px
+    ============================================================ */
+    @media (max-width: 768px) {
+      /* Header */
+      .main-nav { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+      .header-phone span { display: none; }
+      .header-phone::before { content: '☎'; }
+
+      /* Hero */
+      #hero {
+        padding: 120px 24px 60px;
+        min-height: auto;
+      }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .hero-headline { font-size: clamp(2.8rem, 10vw, 4rem); }
+      .hero-stats { padding: 28px 24px; }
+
+      /* Trust bar */
+      .trust-bar-inner { display: none; }
+      .trust-ticker { display: block; }
+
+      /* Sections */
+      .difference-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonials-row2 { grid-template-columns: 1fr; max-width: 100%; }
+      .about-inner { grid-template-columns: 1fr; gap: 32px; }
+      .areas-columns { grid-template-columns: 1fr; gap: 28px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-tagline { display: none; }
+
+      /* Modal */
+      .modal-overlay { padding: 0; align-items: flex-end; }
+      .modal-box {
+        border-radius: 16px 16px 0 0;
+        max-height: 92vh;
+      }
+      .category-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    }
+
+    @media (max-width: 480px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { width: 100%; text-align: center; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header id="site-header">
+  <div class="header-inner">
+    <a href="#hero" class="logo">
+      <span class="logo-name">MUELLER MECHANICAL</span>
+      <span class="logo-sub">HVAC · Philadelphia</span>
+    </a>
+    <nav class="main-nav">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#areas">Service Areas</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:2158963665" class="header-phone"><span>☎ 215-896-3665</span></a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="nav-overlay" id="nav-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="#services" class="mobile-nav-link">Services</a>
+  <a href="#about" class="mobile-nav-link">About</a>
+  <a href="#areas" class="mobile-nav-link">Service Areas</a>
+  <a href="#faq" class="mobile-nav-link">FAQ</a>
+  <a href="#contact" class="mobile-nav-link">Contact</a>
+  <a href="tel:2158963665" class="mobile-phone">☎ 215-896-3665</a>
+</nav>
+
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section id="hero">
+  <div class="hero-inner">
+    <!-- Left -->
+    <div class="hero-left">
+      <p class="hero-label">Philadelphia's HVAC Craftsmen</p>
+      <h1 class="hero-headline">Your Comfort<br>Is Our Craft.</h1>
+      <p class="hero-sub">A2L certified. 4-brand dealer. Real Philly craftsmen — not a franchise, not a call center. We service the same neighborhoods we grew up in.</p>
+      <p class="hero-hours">Mon – Fri &nbsp;·&nbsp; 7:00 AM – 5:00 PM<br>After-hours emergency service available (surcharge applies)</p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary open-modal">GET A FREE QUOTE</button>
+        <a href="tel:2158963665" class="btn btn-secondary">CALL 215-896-3665</a>
+      </div>
+      <div class="hero-trust">
+        <span class="hero-trust-item">A2L / R-32 Certified</span>
+        <span class="hero-trust-item">4-Brand Dealer</span>
+        <span class="hero-trust-item">100% Satisfaction Guaranteed</span>
+      </div>
+    </div>
+
+    <!-- Right — Stats Card -->
+    <div class="hero-stats">
+      <div class="stat-row">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Certified Brands<br><span style="font-size:0.78rem;opacity:0.65;">Amana · Daikin · Goodman · Fujitsu</span></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-number">A2L</div>
+        <div class="stat-label">EPA 2025 Compliant<br><span style="font-size:0.78rem;opacity:0.65;">R-32 & R-454B Ready</span></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Satisfaction Guaranteed<br><span style="font-size:0.78rem;opacity:0.65;">If it's not right, we make it right.</span></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-number" style="font-size:1.5rem;color:var(--orange);">Philly</div>
+        <div class="stat-label">Locally Owned &amp; Operated<br><span style="font-size:0.78rem;opacity:0.65;">From the neighborhood, for the neighborhood.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TRUST BAR
+============================================================ -->
+<div id="trust-bar">
+  <!-- Desktop -->
+  <div class="trust-bar-inner">
+    <div class="trust-item">🏆 Amana Certified Dealer</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">🏆 Daikin Certified Dealer</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">🏆 Goodman Certified Dealer</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">🏆 Fujitsu Certified Dealer</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">⚡ A2L / R-32 Certified</div>
+  </div>
+  <!-- Mobile ticker -->
+  <div class="trust-ticker">
+    <div class="trust-ticker-track">
+      <span class="trust-item">🏆 Amana Certified Dealer</span>
+      <span class="trust-item">🏆 Daikin Certified Dealer</span>
+      <span class="trust-item">🏆 Goodman Certified Dealer</span>
+      <span class="trust-item">🏆 Fujitsu Certified Dealer</span>
+      <span class="trust-item">⚡ A2L / R-32 Certified</span>
+      <span class="trust-item">🏆 Amana Certified Dealer</span>
+      <span class="trust-item">🏆 Daikin Certified Dealer</span>
+      <span class="trust-item">🏆 Goodman Certified Dealer</span>
+      <span class="trust-item">🏆 Fujitsu Certified Dealer</span>
+      <span class="trust-item">⚡ A2L / R-32 Certified</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     MUELLER DIFFERENCE
+============================================================ -->
+<section id="difference">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="section-header" style="text-align:left;margin-bottom:2.5rem;">
+      <p class="section-label">// Why Mueller</p>
+      <h2 class="section-title">Why Philadelphia Calls Us First</h2>
+    </div>
+  </div>
+  <div class="difference-grid fade-in">
+    <div class="diff-card">
+      <div class="diff-icon">⚡</div>
+      <h3>A2L Ready</h3>
+      <p>EPA 2025 mandate compliant. We're certified for next-gen R-32 and R-454B systems. Most Philly contractors aren't there yet. We are — and we've been preparing for years.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon">🛡️</div>
+      <h3>Craftsman Guarantee</h3>
+      <p>Every job backed by our 100% satisfaction guarantee. If it's not right, we make it right. No fine print, no runaround — just accountability you can count on.</p>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon">🏙️</div>
+      <h3>Neighborhood Owned</h3>
+      <p>We're from Philly. We work Philly. When you call Mueller, you're getting a craftsman who actually cares about these neighborhoods — because they're ours too.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SERVICES GRID
+============================================================ -->
+<section id="services">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">// Services</p>
+      <h2 class="section-title">What We Do</h2>
+      <p class="section-subtitle">Full-scope HVAC — residential and commercial.</p>
+    </div>
+    <div class="services-grid fade-in">
+      <div class="service-card">
+        <div class="service-icon">🌬️</div>
+        <h3>AC Repair &amp; Installation</h3>
+        <p>Central air, split systems, full replacements.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">♨️</div>
+        <h3>Heat Pump Systems</h3>
+        <p>Energy-efficient heating and cooling in one system.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3>Ductless Mini Splits</h3>
+        <p>Daikin and Fujitsu specialists. Zone control, no ducts required.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔥</div>
+        <h3>Furnace Repair &amp; Installation</h3>
+        <p>Gas and electric. Emergency repairs and planned replacements.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💨</div>
+        <h3>Indoor Air Quality</h3>
+        <p>Filtration, purification, ventilation solutions.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💧</div>
+        <h3>Humidification &amp; Dehumidification</h3>
+        <p>Whole-home humidity control for comfort and building health.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚿</div>
+        <h3>Boilers &amp; Water Heaters</h3>
+        <p>Combi boilers, tankless, standard — all makes.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏢</div>
+        <h3>Commercial HVAC</h3>
+        <p>RTUs, split systems, and custom commercial solutions.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Thermal Imaging Diagnostics</h3>
+        <p>See problems before they become failures.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>Custom Ductwork &amp; Venting</h3>
+        <p>Fabrication, sealing, dryer vents, kitchen exhaust, bath vents.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📱</div>
+        <h3>Smart Thermostats &amp; Zoning</h3>
+        <p>Ecobee, Nest, Honeywell. Control every room, cut your energy bill.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <h3>HVAC Home Inspections</h3>
+        <p>Buying or selling? We assess the full system so there are no surprises.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TESTIMONIALS
+============================================================ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">// Reviews</p>
+      <h2 class="section-title">What Philadelphia Is Saying</h2>
+    </div>
+
+    <div class="testimonials-grid fade-in">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Furnace went out on a Thursday night in January — I called Mueller first thing Friday morning and they had someone out by 8:30 AM. The tech walked me through exactly what failed, had the part on the truck, and was done in under two hours. Honest pricing, no pressure. These guys are the real deal."</p>
+        <div class="review-author">
+          <div class="review-avatar">MT</div>
+          <div>
+            <div class="review-name">Marcus T.</div>
+            <div class="review-meta">Germantown · via Google</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Had Mueller install a Daikin mini split in my rowhouse. My old AC couldn't handle the third floor — now it's perfect. The install was clean, they patched everything up nicely, and they took the time to show me how to use the app and optimize the zones. Zero complaints."</p>
+        <div class="review-author">
+          <div class="review-avatar">DR</div>
+          <div>
+            <div class="review-name">Dominique R.</div>
+            <div class="review-meta">South Philly · via Google</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Mueller upgraded my system to an A2L-compliant heat pump before the EPA mandate kicked in. They explained the whole R-454B situation clearly, handled the permit, and the new system is already cutting my bills noticeably. If you want someone who actually knows where HVAC is going, call these guys."</p>
+        <div class="review-author">
+          <div class="review-avatar">KW</div>
+          <div>
+            <div class="review-name">Kevin W.</div>
+            <div class="review-meta">West Philly · via Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonials-row2 fade-in" style="margin-top:20px;">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Signed up for a seasonal tune-up after a neighbor recommended Mueller. The tech was thorough — checked everything, cleaned the coils, caught a capacitor that was about to go. Saved me from a breakdown in August. Worth every penny and I'll be doing it every year now."</p>
+        <div class="review-author">
+          <div class="review-avatar">JL</div>
+          <div>
+            <div class="review-name">Jasmine L.</div>
+            <div class="review-meta">Chestnut Hill · via Google</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Mueller services the rooftop RTU at my shop in Kensington. They show up when they say they will, they know commercial equipment, and they keep records of what's been done so there's no guessing game. That kind of professionalism is hard to find. Highly recommend for any business owner."</p>
+        <div class="review-author">
+          <div class="review-avatar">RP</div>
+          <div>
+            <div class="review-name">Robert P.</div>
+            <div class="review-meta">Kensington · via Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section id="about">
+  <div class="container">
+    <div class="about-inner fade-in">
+      <!-- Left card -->
+      <div class="about-card">
+        <p class="about-mantra">Real Craft.<br>Real People.<br>Real Philly.</p>
+        <div class="about-stats-grid">
+          <div class="about-stat">
+            <span class="about-stat-val">4</span>
+            <span class="about-stat-lbl">Brands</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-val">A2L</span>
+            <span class="about-stat-lbl">Ready</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-val" style="font-size:0.95rem;">Mon–Fri<br>7AM–5PM</span>
+            <span class="about-stat-lbl">Hours</span>
+          </div>
+          <div class="about-stat">
+            <span class="about-stat-val">100%</span>
+            <span class="about-stat-lbl">Guaranteed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right content -->
+      <div class="about-content">
+        <p class="section-label">// From The Neighborhood</p>
+        <h2>Built on Craft, Not Corporate Playbooks</h2>
+        <p>Mueller Mechanical was built on a simple idea: Philadelphia deserves HVAC service done right — by people who live here, care about this city, and take pride in their work. We're not a franchise, we don't operate a call center, and we don't send whoever's available. We send craftsmen.</p>
+        <p>We carry four certified brands — Amana, Daikin, Goodman, and Fujitsu — because every home is different and one size never fits all. We're A2L certified ahead of the EPA 2025 mandate, which means our customers aren't scrambling when R-32 and R-454B systems become the standard. We planned for it.</p>
+        <p>From South Philly rowhouses to commercial rooftops in Kensington, from boiler-heated brownstones in Germantown to ductless installations on the Main Line — we've worked it all. Every job gets the same attention. Every customer gets the same straight talk. That's what Mueller Mechanical means.</p>
+        <button class="btn btn-orange-sm open-modal" style="margin-top:8px;">GET A FREE QUOTE</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SERVICE AREAS
+============================================================ -->
+<section id="areas">
+  <div class="areas-inner fade-in">
+    <div class="section-header">
+      <p class="section-label">// Where We Work</p>
+      <h2 class="section-title">Serving Greater Philadelphia</h2>
+      <p class="section-subtitle">Your neighborhood is our neighborhood.</p>
+    </div>
+
+    <div class="areas-columns">
+      <div class="areas-group">
+        <h3>Philadelphia</h3>
+        <div class="area-pills">
+          <span class="area-pill">South Philly</span>
+          <span class="area-pill">West Philly</span>
+          <span class="area-pill">North Philly</span>
+          <span class="area-pill">Germantown</span>
+          <span class="area-pill">Chestnut Hill</span>
+          <span class="area-pill">Fishtown</span>
+          <span class="area-pill">Kensington</span>
+          <span class="area-pill">Manayunk</span>
+          <span class="area-pill">Roxborough</span>
+          <span class="area-pill">Fairmount</span>
+          <span class="area-pill">Graduate Hospital</span>
+          <span class="area-pill">Point Breeze</span>
+        </div>
+      </div>
+      <div class="areas-group">
+        <h3>Surrounding Area</h3>
+        <div class="area-pills">
+          <span class="area-pill">Delaware County</span>
+          <span class="area-pill">Montgomery County</span>
+          <span class="area-pill">Main Line</span>
+          <span class="area-pill">Cheltenham</span>
+          <span class="area-pill">Upper Darby</span>
+          <span class="area-pill">Springfield</span>
+          <span class="area-pill">Ardmore</span>
+          <span class="area-pill">Bala Cynwyd</span>
+          <span class="area-pill">Bryn Mawr</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FAQ
+============================================================ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="section-label">// Real Questions</p>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list fade-in">
+
+      <details>
+        <summary>What is A2L refrigerant and why does it matter?</summary>
+        <div class="faq-answer">A2L refrigerants — including R-32 and R-454B — are the next generation of HVAC refrigerants mandated by the EPA starting in 2025. They have significantly lower global warming potential than older refrigerants like R-410A. They're classified "mildly flammable," which requires certified handling, specialized equipment, and updated installation practices. Mueller Mechanical is fully A2L certified, so our customers can upgrade confidently — now and as the regulations take full effect.</div>
+      </details>
+
+      <details>
+        <summary>What are your service hours?</summary>
+        <div class="faq-answer">Our regular service hours are Monday through Friday, 7:00 AM – 5:00 PM. We do offer after-hours emergency service when your situation can't wait — a surcharge applies for calls outside regular hours. We do not offer 24/7 service by default, but we do our best to respond to genuine emergencies. Call <a href="tel:2158963665" style="color:var(--orange);font-weight:600;">215-896-3665</a> to discuss your situation.</div>
+      </details>
+
+      <details>
+        <summary>What brands do you install and service?</summary>
+        <div class="faq-answer">We are certified dealers and installers for four major brands: <strong>Amana</strong>, <strong>Daikin</strong>, <strong>Goodman</strong>, and <strong>Fujitsu</strong>. We also service most other major brands including Carrier, Trane, Lennox, Rheem, and more. If you have a specific brand or system, call us and we'll let you know what we can do.</div>
+      </details>
+
+      <details>
+        <summary>Do you service commercial properties?</summary>
+        <div class="faq-answer">Yes. We service commercial HVAC equipment including rooftop units (RTUs), commercial split systems, and custom commercial configurations. We work with small businesses, retail spaces, warehouses, and multi-unit buildings throughout Philadelphia and the surrounding area. Contact us to discuss your commercial needs.</div>
+      </details>
+
+      <details>
+        <summary>What's included in a precision tune-up?</summary>
+        <div class="faq-answer">A Mueller precision tune-up includes a full system inspection, coil cleaning, refrigerant level check, electrical component inspection (capacitors, contactors, wiring), blower and motor check, thermostat calibration, filter inspection, and a written report of system condition. We'll flag anything that's at risk of failure so you can make informed decisions — no pressure, just honest assessment.</div>
+      </details>
+
+      <details>
+        <summary>Do you offer free estimates?</summary>
+        <div class="faq-answer">Yes — for new system installations, replacements, and significant projects, we provide free on-site estimates. For diagnostic service calls (troubleshooting an existing system), a service call fee applies, which is credited toward the cost of repair if you proceed. Use the quote form on this page to get started, or call us at <a href="tel:2158963665" style="color:var(--orange);font-weight:600;">215-896-3665</a>.</div>
+      </details>
+
+      <details>
+        <summary>How do I qualify for the senior, military, or first responder discount?</summary>
+        <div class="faq-answer">We offer discounts for seniors (65+), active and veteran military, and first responders (police, fire, EMT). Simply mention your status when scheduling or at the time of service, and we'll apply the discount. Valid ID or documentation may be requested. Thank you for your service.</div>
+      </details>
+
+      <details>
+        <summary>What areas do you service?</summary>
+        <div class="faq-answer">We service Philadelphia and the surrounding region, including Delaware County, parts of Montgomery County, and the Main Line. Key neighborhoods include South Philly, West Philly, North Philly, Germantown, Chestnut Hill, Fishtown, Kensington, Manayunk, Roxborough, Fairmount, Graduate Hospital, and Point Breeze. Surrounding communities include Upper Darby, Cheltenham, Springfield, Ardmore, Bala Cynwyd, and Bryn Mawr. Not sure if we cover your area? Call or use the quote form — the zip code step will confirm coverage immediately.</div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section id="contact">
+  <div class="contact-inner container">
+    <!-- Left -->
+    <div class="contact-info fade-in">
+      <h2>Ready to Get Started?</h2>
+
+      <div class="contact-detail">
+        <span class="contact-detail-icon">📞</span>
+        <div>
+          <a href="tel:2158963665" class="contact-phone-link">215-896-3665</a>
+          <div class="contact-detail-text">Call or text — we answer.</div>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <span class="contact-detail-icon">✉️</span>
+        <div class="contact-detail-text">
+          <a href="mailto:jm@muellermechanical.com" style="color:rgba(255,255,255,0.8);">jm@muellermechanical.com</a>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <span class="contact-detail-icon">🕐</span>
+        <div>
+          <div class="contact-detail-text">Mon – Fri &nbsp;·&nbsp; 7:00 AM – 5:00 PM</div>
+          <div class="contact-note">After-hours emergency service available — surcharge applies.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;">
+        <button class="btn btn-primary open-modal">GET A FREE QUOTE</button>
+      </div>
+    </div>
+
+    <!-- Right — Form -->
+    <div class="contact-form-card fade-in">
+      <h3>Send Us a Message</h3>
+      <form id="contact-form" onsubmit="handleContactForm(event)">
+        <div class="form-group">
+          <label for="cf-name">Full Name</label>
+          <input type="text" id="cf-name" name="name" placeholder="Your full name" required />
+        </div>
+        <div class="form-group">
+          <label for="cf-phone">Phone Number</label>
+          <input type="tel" id="cf-phone" name="phone" placeholder="(215) 000-0000" required />
+        </div>
+        <div class="form-group">
+          <label for="cf-email">Email Address</label>
+          <input type="email" id="cf-email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="cf-address">Service Address</label>
+          <input type="text" id="cf-address" name="address" placeholder="Street address, Philadelphia, PA" />
+        </div>
+        <div class="form-group">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" placeholder="Tell us what you need..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">SEND MESSAGE</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <!-- Col 1 -->
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#areas">Service Areas</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="footer-social" style="margin-top:20px;">
+          <a href="https://facebook.com" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2 -->
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">AC Repair &amp; Installation</a></li>
+          <li><a href="#services">Heat Pump Systems</a></li>
+          <li><a href="#services">Ductless Mini Splits</a></li>
+          <li><a href="#services">Furnace Repair</a></li>
+          <li><a href="#services">Boilers &amp; Water Heaters</a></li>
+          <li><a href="#services">Commercial HVAC</a></li>
+          <li><a href="#services">Indoor Air Quality</a></li>
+          <li><a href="#services">HVAC Inspections</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3 -->
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">
+          <span>📞</span>
+          <a href="tel:2158963665">215-896-3665</a>
+        </div>
+        <div class="footer-contact-item">
+          <span>✉️</span>
+          <a href="mailto:jm@muellermechanical.com">jm@muellermechanical.com</a>
+        </div>
+        <div class="footer-contact-item">
+          <span>🕐</span>
+          <span>Mon–Fri · 7AM–5PM</span>
+        </div>
+        <div class="footer-contact-item">
+          <span>📍</span>
+          <span>Philadelphia, PA &amp; Surrounding Area</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Mueller Mechanical LLC · Philadelphia, PA · All Rights Reserved</p>
+      <p class="footer-tagline">Philadelphia's HVAC Craftsmen — Serving the Neighborhood Since Day One.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     QUOTE MODAL
+============================================================ -->
+<div class="modal-overlay" id="quote-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box" id="modal-box">
+
+    <div class="modal-header">
+      <span class="modal-title" id="modal-title">Request a Free Quote</span>
+      <button class="modal-close" id="modal-close" aria-label="Close modal">✕</button>
+    </div>
+
+    <div class="modal-progress">
+      <span class="modal-progress-text" id="modal-progress-text">Step 1 of 3</span>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- STEP 1: ZIP -->
+      <div class="step-panel active" id="step-1">
+        <div class="step-icon">📍</div>
+        <h2 class="step-heading">Where are you located?</h2>
+        <p class="step-sub">Enter your zip code to confirm we service your area.</p>
+
+        <div class="zip-input-wrap">
+          <input
+            type="text"
+            id="zip-input"
+            inputmode="numeric"
+            maxlength="5"
+            placeholder="Enter your zip code"
+            autocomplete="postal-code"
+          />
+          <span class="zip-check" id="zip-check"></span>
+        </div>
+        <div class="zip-error" id="zip-error">
+          We don't currently service this area. Please call us at <a href="tel:2158963665" style="color:var(--orange);font-weight:600;">215-896-3665</a> to confirm coverage.
+        </div>
+
+        <button class="modal-btn" id="zip-continue">CONTINUE</button>
+      </div>
+
+      <!-- STEP 2: CATEGORY -->
+      <div class="step-panel" id="step-2">
+        <h2 class="step-heading">What do you need help with?</h2>
+        <p class="step-sub">Select the category that best fits your situation.</p>
+
+        <div class="category-grid">
+          <div class="cat-card" data-service="AC Repair & Service">
+            <div class="cat-emoji">🌬️</div>
+            <div class="cat-name">AC Repair &amp; Service</div>
+          </div>
+          <div class="cat-card" data-service="Heating Repair & Service">
+            <div class="cat-emoji">🔥</div>
+            <div class="cat-name">Heating Repair &amp; Service</div>
+          </div>
+          <div class="cat-card" data-service="Ductless Mini Split">
+            <div class="cat-emoji">🎯</div>
+            <div class="cat-name">Ductless Mini Split</div>
+          </div>
+          <div class="cat-card" data-service="New System Installation">
+            <div class="cat-emoji">🏗️</div>
+            <div class="cat-name">New System Installation</div>
+          </div>
+          <div class="cat-card" data-service="Indoor Air Quality">
+            <div class="cat-emoji">💨</div>
+            <div class="cat-name">Indoor Air Quality</div>
+          </div>
+          <div class="cat-card" data-service="Boilers & Water Heaters">
+            <div class="cat-emoji">🚿</div>
+            <div class="cat-name">Boilers &amp; Water Heaters</div>
+          </div>
+          <div class="cat-card" data-service="Commercial HVAC">
+            <div class="cat-emoji">🏢</div>
+            <div class="cat-name">Commercial HVAC</div>
+          </div>
+          <div class="cat-card" data-service="HVAC Home Inspection">
+            <div class="cat-emoji">🔍</div>
+            <div class="cat-name">HVAC Home Inspection</div>
+          </div>
+          <div class="cat-card" data-service="Other / Not Sure">
+            <div class="cat-emoji">❓</div>
+            <div class="cat-name">Other / Not Sure</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: CONTACT INFO -->
+      <div class="step-panel" id="step-3">
+        <h2 class="step-heading">Almost done.</h2>
+        <p class="step-sub">Tell us about yourself and we'll be in touch within 1 business day.</p>
+
+        <form class="modal-form" id="quote-form" onsubmit="submitQuote(event)">
+          <div class="form-group">
+            <label for="q-name">Full Name *</label>
+            <input type="text" id="q-name" placeholder="Your full name" required />
+          </div>
+          <div class="form-group">
+            <label for="q-phone">Phone Number *</label>
+            <input type="tel" id="q-phone" placeholder="(215) 000-0000" required />
+          </div>
+          <div class="form-group">
+            <label for="q-email">Email Address *</label>
+            <input type="email" id="q-email" placeholder="you@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="q-address">Service Address</label>
+            <input type="text" id="q-address" placeholder="Street address" />
+          </div>
+          <div class="form-group">
+            <label for="q-notes">Tell us more (optional)</label>
+            <textarea id="q-notes" placeholder="Any details about your system or the issue?"></textarea>
+          </div>
+          <button type="submit" class="modal-btn">SUBMIT MY REQUEST</button>
+        </form>
+      </div>
+
+      <!-- STEP 4: CONFIRMATION -->
+      <div class="step-panel" id="step-4">
+        <div style="text-align:center;padding:12px 0;">
+          <div class="confirm-check">✓</div>
+          <h2 class="confirm-heading">Request Received!</h2>
+          <p class="confirm-sub">We'll follow up within 1 business day (Mon–Fri, 7am–5pm) to confirm your appointment details.</p>
+          <p class="confirm-phone">Need immediate help? <a href="tel:2158963665">Call 215-896-3665</a></p>
+          <button class="modal-btn-close" id="confirm-close" style="margin-top:24px;">Close</button>
+        </div>
+      </div>
+
+    </div><!-- /modal-body -->
+  </div><!-- /modal-box -->
+</div><!-- /modal-overlay -->
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  /* ---- Sticky header ---- */
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  /* ---- Mobile nav ---- */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  const navOverlay = document.getElementById('nav-overlay');
+
+  function openMobileNav() {
+    mobileNav.classList.add('open');
+    navOverlay.classList.add('open');
+    hamburger.classList.add('active');
+    document.body.classList.add('modal-open');
+  }
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    navOverlay.classList.remove('open');
+    hamburger.classList.remove('active');
+    document.body.classList.remove('modal-open');
+  }
+
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
+  });
+  navOverlay.addEventListener('click', closeMobileNav);
+  document.querySelectorAll('.mobile-nav-link, .mobile-nav .mobile-phone').forEach(link => {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  /* ---- Fade-in on scroll ---- */
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  fadeEls.forEach(el => fadeObserver.observe(el));
+
+  /* ---- Modal logic ---- */
+  const modalOverlay = document.getElementById('quote-modal');
+  const modalBox = document.getElementById('modal-box');
+  let currentStep = 1;
+  let selectedZip = '';
+  let selectedService = '';
+
+  function openModal() {
+    modalOverlay.classList.add('open');
+    document.body.classList.add('modal-open');
+    goToStep(1);
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  function goToStep(n) {
+    currentStep = n;
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('step-' + n).classList.add('active');
+
+    const progressEl = document.getElementById('modal-progress-text');
+    if (n <= 3) {
+      progressEl.textContent = 'Step ' + n + ' of 3';
+      progressEl.style.display = 'block';
+    } else {
+      progressEl.style.display = 'none';
+    }
+  }
+
+  /* Open triggers */
+  document.querySelectorAll('.open-modal').forEach(btn => {
+    btn.addEventListener('click', openModal);
+  });
+
+  /* Close triggers */
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('confirm-close').addEventListener('click', closeModal);
+
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
+  });
+
+  /* ---- Step 1: Zip validation ---- */
+  const zipInput = document.getElementById('zip-input');
+  const zipCheck = document.getElementById('zip-check');
+  const zipError = document.getElementById('zip-error');
+
+  function isValidZip(zip) {
+    if (zip.length !== 5) return false;
+    const num = parseInt(zip, 10);
+    if (isNaN(num)) return false;
+    const prefix3 = zip.substring(0, 3);
+    // Valid prefixes: 190, 191, 193, 194
+    const validPrefixes = ['190', '191', '193', '194'];
+    return validPrefixes.includes(prefix3);
+  }
+
+  zipInput.addEventListener('input', () => {
+    const val = zipInput.value.replace(/\D/g, '');
+    zipInput.value = val;
+    zipError.classList.remove('show');
+    zipInput.classList.remove('valid', 'invalid');
+    zipCheck.style.display = 'none';
+
+    if (val.length === 5) {
+      if (isValidZip(val)) {
+        zipInput.classList.add('valid');
+        zipCheck.textContent = '✓';
+        zipCheck.style.display = 'block';
+        zipCheck.style.color = '#22C55E';
+        selectedZip = val;
+      } else {
+        zipInput.classList.add('invalid');
+        zipCheck.textContent = '✗';
+        zipCheck.style.display = 'block';
+        zipCheck.style.color = '#EF4444';
+      }
+    }
+  });
+
+  document.getElementById('zip-continue').addEventListener('click', () => {
+    const val = zipInput.value;
+    if (val.length !== 5) {
+      zipError.classList.add('show');
+      zipError.textContent = 'Please enter a valid 5-digit zip code.';
+      return;
+    }
+    if (!isValidZip(val)) {
+      zipInput.classList.add('invalid');
+      zipError.classList.add('show');
+      zipError.innerHTML = 'We don\'t currently service this area. Please call us at <a href="tel:2158963665" style="color:var(--orange);font-weight:600;">215-896-3665</a> to confirm coverage.';
+      return;
+    }
+    selectedZip = val;
+    // Pre-fill address field in step 3
+    document.getElementById('q-address').value = val;
+    goToStep(2);
+  });
+
+  /* ---- Step 2: Category cards ---- */
+  document.querySelectorAll('.cat-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      selectedService = card.dataset.service;
+      // Short delay then advance
+      setTimeout(() => goToStep(3), 220);
+    });
+  });
+
+  /* ---- Step 3: Submit ---- */
+  function submitQuote(e) {
+    e.preventDefault();
+    goToStep(4);
+  }
+
+  /* ---- Contact form ---- */
+  function handleContactForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#22C55E';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'SEND MESSAGE';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
